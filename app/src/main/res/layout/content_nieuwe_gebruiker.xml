@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".NieuweGebruiker"
+    tools:showIn="@layout/activity_nieuwe_gebruiker">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TableRow>
+            <TextView
+                android:id="@+id/geefvoornaam"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/geef_voornaam"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                />
+            <EditText
+                android:id="@+id/voornaam"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/geeffamilienaam"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/geef_Familienaam"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                />
+            <EditText
+                android:id="@+id/familienaam"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                />
+        </TableRow>
+<TableRow>
+    <TextView
+        android:id="@+id/geeftoken"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kies token"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="20dp"
+        />
+    <RadioGroup
+        android:id="@+id/token"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <RadioButton
+            android:id="@+id/patrick"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Patrick" />
+        <RadioButton
+            android:id="@+id/spongebob"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Spongebob" />
+        <RadioButton
+            android:id="@+id/octo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Octo" />
+        <RadioButton
+            android:id="@+id/krab"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Krab" />
+    </RadioGroup>
+</TableRow>
+
+        <TableRow android:layout_width="84dp">
+
+            <ImageView
+                android:layout_width="127dp"
+                android:layout_height="67dp"
+                android:src="@drawable/spongebob" />
+
+            <ImageView
+                android:layout_width="121dp"
+                android:layout_height="69dp"
+                android:src="@drawable/krabs" />
+
+
+
+        </TableRow>
+<TableRow>
+
+    <ImageView
+
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:src="@drawable/patrick" />
+    <ImageView
+
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:src="@drawable/octo" />
+</TableRow>
+        <TableRow
+            android:layout_width="121dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="50dp">
+
+            <Button
+                android:id="@+id/knopBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="0dp"
+                android:background="@color/colorDanger"
+                android:onClick="knopBack_onClick"
+                android:text="@string/annuleer" />
+
+            <Button
+
+                android:id="@+id/knopAdd"
+                android:layout_gravity="left"
+                android:background="@color/colorAccent"
+                android:onClick="knopAdd_onClick"
+                android:text="@string/voegtoe" />
+        </TableRow>
+
+    </TableLayout>
+</android.support.constraint.ConstraintLayout>

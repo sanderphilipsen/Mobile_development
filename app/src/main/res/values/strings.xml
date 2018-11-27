@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Project_Mobile_Dev</string>
+    <string name="app_titel">Kies een gebruiker</string>
+    <string name="nieuw_account">Maak nieuw account</string>
+    <string name="kies_gebruiker">Kies een gebruiker</string>
+    <string name="title_activity_nieuwe_gebruiker">Voeg account toe</string>
+    <string name="geef_voornaam">Voornaam</string>
+    <string name="geef_Familienaam">Familienaam</string>
+    <string name="geef_leeftijd">Leeftijd</string>
+    <string name="annuleer">Annuleer</string>
+    <string name="voegtoe">Voegtoe</string>
+    <string name="title_activity_testje">testje</string>
+    <string name="title_activity_home">Menu</string>
+    <string name="tijd_om_te_spelen">Het is weer tijd om een spelletje te spelen</string>
+    <string name="title_activity_stoornis__klankkeuze">Kies hier wat je wil oefenen</string>
+    <string name="title_activity_doelklankkeuze">Kies de doelklank</string>
+    <string name="title_activity_min_paar_keuze">Kies het minimaale paar</string>
+</resources>
