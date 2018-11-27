@@ -45,13 +45,13 @@ private void vulListView(){
             new ArrayAdapter<Doelklank>(this,
                     android.R.layout.simple_list_item_1, doelklanken);
 
-    final ListView listViewPresidents =
+    final ListView listViewDoelklanken =
             (ListView) findViewById(R.id.listViewDoelKlank);
-    listViewPresidents.setAdapter(adapter);
+    listViewDoelklanken.setAdapter(adapter);
 
     // listViewPresidents.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
-    listViewPresidents.setOnItemClickListener(
+    listViewDoelklanken.setOnItemClickListener(
             new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parentView,
