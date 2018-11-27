@@ -35,6 +35,10 @@
         <activity
             android:name=".MinPaarKeuze"
             android:label="@string/title_activity_min_paar_keuze"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Spel_keuze"
+            android:label="@string/title_activity_spel_keuze"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

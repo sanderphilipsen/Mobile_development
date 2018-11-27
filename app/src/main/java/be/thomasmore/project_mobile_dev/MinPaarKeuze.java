@@ -62,7 +62,7 @@ public class MinPaarKeuze extends AppCompatActivity {
     {
         Bundle bundle = new Bundle();
         bundle.putLong("paarid", id);
-        Intent intent = new Intent(this, MinPaarKeuze.class);
+        Intent intent = new Intent(this, Spel_keuze.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }
