@@ -18,6 +18,7 @@ public class ZegHetZelfEens extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zeg_het_zelf_eens);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        db = new DatabaseHelper(this);
         setSupportActionBar(toolbar);
         spel = new Spel();
         Bundle bundle = getIntent().getExtras();

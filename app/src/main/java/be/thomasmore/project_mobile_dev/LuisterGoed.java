@@ -15,7 +15,7 @@ public class LuisterGoed extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         spel = new Spel();
-
+        db = new DatabaseHelper(this);
         Bundle bundle = getIntent().getExtras();
         spel.setPaarId( bundle.getLong("paarId"));
         spel.setGebruikerId(bundle.getLong("gebruikerId"));
