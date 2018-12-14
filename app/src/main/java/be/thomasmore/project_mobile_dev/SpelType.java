@@ -27,4 +27,7 @@ public class SpelType {
     public void setNaam(String naam) {
         this.naam = naam;
     }
+
+    @Override
+    public String toString() {return naam;}
 }
