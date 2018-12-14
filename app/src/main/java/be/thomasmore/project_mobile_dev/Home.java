@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 public class Home extends AppCompatActivity {
     private DatabaseHelper db;
+  public   Gebruiker gebruiker = new Gebruiker();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         db = new DatabaseHelper(this);
@@ -29,17 +30,11 @@ public class Home extends AppCompatActivity {
         Set_Token(gebruiker);
         TextView editTextNaam = (TextView) findViewById(R.id.naam);
         editTextNaam.setText("Hallo "+gebruiker.welkom());
-  /*      FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
     }
 
     public void Speel_onClick(View v){
+        Bundle bundle = new Bundle();
+        bundle.putLong("gebruikerid", gebruiker.getId());
         Intent intent = new Intent(this, Stoornis_Klankkeuze.class);
         startActivity(intent);
     }

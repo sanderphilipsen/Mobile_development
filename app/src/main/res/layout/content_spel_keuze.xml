@@ -8,4 +8,10 @@
     tools:context=".Spel_keuze"
     tools:showIn="@layout/activity_spel_keuze">
 
+    <ListView
+        android:id="@+id/listViewSpelType"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:dividerHeight="1dp" />
+
 </android.support.constraint.ConstraintLayout>

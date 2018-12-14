@@ -40,8 +40,6 @@ public class MinPaarKeuze extends AppCompatActivity {
                 (ListView) findViewById(R.id.listViewPaar);
         listViewParen.setAdapter(adapter);
 
-        // listViewPresidents.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-
         listViewParen.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
