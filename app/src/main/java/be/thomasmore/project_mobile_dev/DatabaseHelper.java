@@ -480,7 +480,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public List<SpelType> getSpelTypes() {
         List<SpelType> lijst = new ArrayList<SpelType>();
 
-        String selectQuery = "SELECT  * FROM speltype ORDER BY id";
+        String selectQuery = "SELECT  * FROM speltype";
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
