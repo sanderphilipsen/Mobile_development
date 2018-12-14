@@ -39,6 +39,14 @@
         <activity
             android:name=".Spel_keuze"
             android:label="@string/title_activity_spel_keuze"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ZegHetZelfEens"
+            android:label="@string/title_activity_zeg_het_zelf_eens"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LuisterGoed"
+            android:label="@string/title_activity_luister_goed"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

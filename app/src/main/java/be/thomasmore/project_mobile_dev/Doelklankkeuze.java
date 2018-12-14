@@ -15,6 +15,7 @@ import java.util.List;
 public class Doelklankkeuze extends AppCompatActivity {
     private DatabaseHelper db;
     List<Doelklank> doelklanken = new ArrayList<Doelklank>();
+    public long gebruikerId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +24,9 @@ public class Doelklankkeuze extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Bundle bundle = getIntent().getExtras();
-        long klankid = bundle.getLong("klankid");
-        long stoornisid = bundle.getLong("stoornisid");
+        long klankid = bundle.getLong("klankId");
+        long stoornisid = bundle.getLong("stoornisId");
+        gebruikerId = bundle.getLong("gebruikerId");
         doelklanken = db.getDoelklankenByKlankAndStoornis(klankid,stoornisid);
         vulListView();
     }
@@ -52,7 +54,8 @@ private void vulListView(){
         private void gaVerder(long id)
         {
             Bundle bundle = new Bundle();
-            bundle.putLong("doelklankid", id);
+            bundle.putLong("doelklankId", id);
+            bundle.putLong("gebruikerId" , gebruikerId);
             Intent intent = new Intent(this, MinPaarKeuze.class);
             intent.putExtras(bundle);
             startActivity(intent);

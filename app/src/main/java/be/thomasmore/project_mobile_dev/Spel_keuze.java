@@ -17,7 +17,8 @@ import java.util.List;
 public class Spel_keuze extends AppCompatActivity {
     public DatabaseHelper db;
     List<SpelType> speltypes = new ArrayList<SpelType>();
-
+    public long gebruikerId;
+    public long paarId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +26,9 @@ public class Spel_keuze extends AppCompatActivity {
         setContentView(R.layout.activity_spel_keuze);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Bundle bundle = getIntent().getExtras();
+        gebruikerId =  bundle.getLong("gebruikerId");
+        paarId =  bundle.getLong("paarId");
         speltypes = db.getSpelTypes();
         vulListView();
     }
@@ -52,8 +56,16 @@ public class Spel_keuze extends AppCompatActivity {
     private void gaVerder(long id)
     {
         Bundle bundle = new Bundle();
-        bundle.putLong("spelid", id);
-        Intent intent = new Intent(this, MinPaarKeuze.class);
+        bundle.putLong("spelId", id);
+        bundle.putLong("gebruikerId" , gebruikerId);
+        bundle.putLong("paarId" , paarId);
+        Intent intent;
+        if (id == 1){
+            intent = new Intent(this, LuisterGoed.class);
+        }
+        else {
+            intent = new Intent(this, ZegHetZelfEens.class);
+        }
         intent.putExtras(bundle);
         startActivity(intent);
     }

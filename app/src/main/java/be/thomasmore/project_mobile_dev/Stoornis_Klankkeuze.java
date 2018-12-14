@@ -23,26 +23,17 @@ public class Stoornis_Klankkeuze extends AppCompatActivity {
     private RadioGroup klankGroup;
     private Klank klank = new Klank();
     private Stoornis stoornis = new Stoornis();
-
-
+    public   Gebruiker gebruiker = new Gebruiker();
+    public long gebruikerId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stoornis__klankkeuze);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Bundle bundle = getIntent().getExtras();
+        gebruikerId = bundle.getLong("gebruikerId");
 
         db = new DatabaseHelper(this);
-      //  klanken = db.getKlanken();
-       // stoornissen = db.getStoornissen();
-
-       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
 
     }
     public void  geefKeuzedoor_onClick(View v){
@@ -60,8 +51,9 @@ public class Stoornis_Klankkeuze extends AppCompatActivity {
 
            Intent intent = new Intent(this, Doelklankkeuze.class);
         Bundle bundle = new Bundle();
-        bundle.putLong("klankid", klank.getId());
-        bundle.putLong("stoornisid", stoornis.getId());
+        bundle.putLong("gebruikerId", gebruikerId);
+        bundle.putLong("klankId", klank.getId());
+        bundle.putLong("stoornisId", stoornis.getId());
         intent.putExtras(bundle);
         startActivity(intent);
     }
