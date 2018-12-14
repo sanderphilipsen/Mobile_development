@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.*;
 import java.util.List;
 
+import be.thomasmore.project_mobile_dev.classes.Gebruiker;
+
 public class GebruikerAdapter extends ArrayAdapter<Gebruiker> {
 
     private final Context context;

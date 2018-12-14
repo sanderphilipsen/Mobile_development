@@ -2,16 +2,18 @@ package be.thomasmore.project_mobile_dev;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import be.thomasmore.project_mobile_dev.classes.Gebruiker;
+import be.thomasmore.project_mobile_dev.classes.Klank;
+import be.thomasmore.project_mobile_dev.classes.Stoornis;
 
 public class Stoornis_Klankkeuze extends AppCompatActivity {
     private DatabaseHelper db;
@@ -23,7 +25,7 @@ public class Stoornis_Klankkeuze extends AppCompatActivity {
     private RadioGroup klankGroup;
     private Klank klank = new Klank();
     private Stoornis stoornis = new Stoornis();
-    public   Gebruiker gebruiker = new Gebruiker();
+    public Gebruiker gebruiker = new Gebruiker();
     public long gebruikerId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -12,6 +12,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import be.thomasmore.project_mobile_dev.classes.Doelklank;
+
 public class Doelklankkeuze extends AppCompatActivity {
     private DatabaseHelper db;
     List<Doelklank> doelklanken = new ArrayList<Doelklank>();

@@ -1,4 +1,4 @@
-package be.thomasmore.project_mobile_dev;
+package be.thomasmore.project_mobile_dev.classes;
 
 public class Gebruiker {
     private long id;

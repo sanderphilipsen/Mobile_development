@@ -9,10 +9,18 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
+import be.thomasmore.project_mobile_dev.classes.Doelklank;
+import be.thomasmore.project_mobile_dev.classes.Gebruiker;
+import be.thomasmore.project_mobile_dev.classes.Klank;
+import be.thomasmore.project_mobile_dev.classes.Paar;
+import be.thomasmore.project_mobile_dev.classes.Spel;
+import be.thomasmore.project_mobile_dev.classes.SpelType;
+import be.thomasmore.project_mobile_dev.classes.Stoornis;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 9;
     // Database Name
     private static final String DATABASE_NAME = "Project";
 
@@ -24,12 +32,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-
     // methode wordt uitgevoerd als de database gecreëerd wordt
     // hierin de tables creëren en opvullen met gegevens
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         String CREATE_TABLE_GEBRUIKER = "CREATE TABLE gebruiker (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "voornaam TEXT," +
@@ -67,7 +73,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "gebruikerId INTEGER," +
                 "speltypeId INTEGER," +
-                "paarId INTEGER)";
+                "paarId INTEGER, " +
+                "FOREIGN KEY (gebruikerId) REFERENCES gebruiker(id), " +
+                "FOREIGN KEY (paarId) REFERENCES paar(id), " +
+                "FOREIGN KEY (speltypeId) REFERENCES speltype(id))";
         db.execSQL(CREATE_TABLE_SPEL);
         insertGebruikers(db);
         insertStoornissen(db);
@@ -156,14 +165,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // hierin de vorige tabellen wegdoen en opnieuw creëren
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS Spel");
+        db.execSQL("DROP TABLE IF EXISTS spel");
         db.execSQL("DROP TABLE IF EXISTS gebruiker");
         db.execSQL("DROP TABLE IF EXISTS stoornis");
         db.execSQL("DROP TABLE IF EXISTS klank");
         db.execSQL("DROP TABLE IF EXISTS doelklank");
         db.execSQL("DROP TABLE IF EXISTS paar");
         db.execSQL("DROP TABLE IF EXISTS speltype");
-        db.execSQL("DROP TABLE IF EXISTS Spel");
 
         // Create tables again
         onCreate(db);
@@ -176,13 +184,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // insert-methode met ContentValues
     public long insertGebruiker(Gebruiker gebruiker) {
         SQLiteDatabase db = this.getWritableDatabase();
-
         ContentValues values = new ContentValues();
         values.put("voornaam", gebruiker.getVoornaam());
         values.put("familienaam", gebruiker.getFamilienaam());
         values.put("token", gebruiker.getToken());
         long id = db.insert("gebruiker", null, values);
 
+        db.close();
+        return id;
+    }
+    public long insertSpel(Spel spel) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("gebruikerId", spel.getGebruikerId());
+        values.put("speltypeId", spel.getSpeltypeId());
+        values.put("paarId", spel.getPaarId());
+        long id = db.insert("spel", null, values);
         db.close();
         return id;
     }

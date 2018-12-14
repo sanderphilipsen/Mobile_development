@@ -2,19 +2,15 @@ package be.thomasmore.project_mobile_dev;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.util.Log;
 import android.content.Intent;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import be.thomasmore.project_mobile_dev.classes.Gebruiker;
 
 public class MainActivity extends AppCompatActivity {
     private DatabaseHelper db;

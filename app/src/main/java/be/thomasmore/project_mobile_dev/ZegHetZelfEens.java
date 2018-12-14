@@ -7,20 +7,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import be.thomasmore.project_mobile_dev.classes.Spel;
+
 public class ZegHetZelfEens extends AppCompatActivity {
-public long gebruikerId;
-public long paarId;
-public  long speltypeId;
+    public Spel spel;
+    private DatabaseHelper db;
+    public long spelId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zeg_het_zelf_eens);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        spel = new Spel();
         Bundle bundle = getIntent().getExtras();
-        gebruikerId =  bundle.getLong("gebruikerId");
-        paarId =  bundle.getLong("paarId");
-        speltypeId =  bundle.getLong("speltypeId");
+
+        spel.setPaarId( bundle.getLong("paarId"));
+        spel.setGebruikerId(bundle.getLong("gebruikerId"));
+        spel.setSpeltypeId(bundle.getLong("speltypeId"));
+       spelId = db.insertSpel(spel);
     }
 }
