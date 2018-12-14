@@ -12,7 +12,7 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 5;
     // Database Name
     private static final String DATABASE_NAME = "Project";
 
@@ -59,11 +59,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "doelklankId INTEGER, " +
                 "FOREIGN KEY (doelklankId) REFERENCES doelklank(id))";
         db.execSQL(CREATE_TABLE_PAAR);
+        String CREATE_TABLE_SPELTYPE = "CREATE TABLE speltype (" +
+                "id INTEGER PRIMARY KEY," +
+                "naam TEXT)";
+        db.execSQL(CREATE_TABLE_SPELTYPE);
         insertGebruikers(db);
         insertStoornissen(db);
         insertKlanken(db);
         insertDoelklanken(db);
         insertParen(db);
+        insertSpelTypes(db);
 
     }
 
@@ -138,6 +143,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     db.execSQL("INSERT INTO paar (id,eerstepaar,tweedepaar,doelklankId) VALUES (22,'fien','tien',10);");
     }
 
+    private void insertSpelTypes(SQLiteDatabase db) {
+        db.execSQL("INSERT INTO speltype (id, naam) VALUES (1, 'Spel 1');");
+        db.execSQL("INSERT INTO speltype (id, naam) VALUES (2, 'Spel 2');");
+    }
+
     // methode wordt uitgevoerd als database geupgrade wordt
     // hierin de vorige tabellen wegdoen en opnieuw creëren
     @Override
@@ -147,6 +157,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS klank");
         db.execSQL("DROP TABLE IF EXISTS doelklank");
         db.execSQL("DROP TABLE IF EXISTS paar");
+        db.execSQL("DROP TABLE IF EXISTS speltype");
 
         // Create tables again
         onCreate(db);
@@ -459,6 +470,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 Paar paar = new Paar(cursor.getLong(0),
                         cursor.getString(1), cursor.getString(2),cursor.getInt(3));
                 lijst.add(paar);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return lijst;
+    }
+    public List<SpelType> getSpelTypes() {
+        List<SpelType> lijst = new ArrayList<SpelType>();
+
+        String selectQuery = "SELECT  * FROM speltype ORDER BY id";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                SpelType speltype = new SpelType(cursor.getLong(0),
+                        cursor.getString(1));
+                lijst.add(speltype);
             } while (cursor.moveToNext());
         }
 

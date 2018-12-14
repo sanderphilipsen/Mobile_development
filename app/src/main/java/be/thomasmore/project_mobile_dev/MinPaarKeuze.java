@@ -29,14 +29,6 @@ public class MinPaarKeuze extends AppCompatActivity {
         paren = db.getParen();
         paren = db.getParenByDoelklankid(doelklankid);
         vulListView();
-      /*  FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
     }
     private void vulListView(){
         ArrayAdapter<Paar> adapter =
@@ -46,8 +38,6 @@ public class MinPaarKeuze extends AppCompatActivity {
         final ListView listViewParen =
                 (ListView) findViewById(R.id.listViewPaar);
         listViewParen.setAdapter(adapter);
-
-        // listViewPresidents.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
         listViewParen.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
