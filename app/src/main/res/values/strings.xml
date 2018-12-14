@@ -16,4 +16,6 @@
     <string name="title_activity_doelklankkeuze">Kies de doelklank</string>
     <string name="title_activity_min_paar_keuze">Kies het minimale paar</string>
     <string name="title_activity_spel_keuze">Kies je favoriete spel</string>
+    <string name="title_activity_zeg_het_zelf_eens">ZegHetZelfEens</string>
+    <string name="title_activity_luister_goed">LuisterGoed</string>
 </resources>

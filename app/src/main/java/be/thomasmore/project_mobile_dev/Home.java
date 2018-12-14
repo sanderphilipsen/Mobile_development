@@ -15,6 +15,7 @@ import android.widget.TextView;
 public class Home extends AppCompatActivity {
     private DatabaseHelper db;
   public   Gebruiker gebruiker = new Gebruiker();
+  public long gebruikerId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         db = new DatabaseHelper(this);
@@ -24,9 +25,9 @@ public class Home extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Bundle bundle = getIntent().getExtras();
-        long persoon = bundle.getLong("persoon");
+        gebruikerId = bundle.getLong("gebruikerId");
         Gebruiker gebruiker = new Gebruiker();
-        gebruiker = db.getGebruiker(persoon);
+        gebruiker = db.getGebruiker(gebruikerId);
         Set_Token(gebruiker);
         TextView editTextNaam = (TextView) findViewById(R.id.naam);
         editTextNaam.setText("Hallo "+gebruiker.welkom());
@@ -34,8 +35,9 @@ public class Home extends AppCompatActivity {
 
     public void Speel_onClick(View v){
         Bundle bundle = new Bundle();
-        bundle.putLong("gebruikerid", gebruiker.getId());
+        bundle.putLong("gebruikerId", gebruikerId);
         Intent intent = new Intent(this, Stoornis_Klankkeuze.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
     public void Resultaten_onClick(View v){

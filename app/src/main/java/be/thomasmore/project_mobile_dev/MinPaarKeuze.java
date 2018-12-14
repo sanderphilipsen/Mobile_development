@@ -17,6 +17,7 @@ import java.util.List;
 public class MinPaarKeuze extends AppCompatActivity {
     private DatabaseHelper db;
     List<Paar> paren = new ArrayList<Paar>();
+    public long gebruikerId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         db = new DatabaseHelper(this);
@@ -25,7 +26,8 @@ public class MinPaarKeuze extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Bundle bundle = getIntent().getExtras();
-        long doelklankid = bundle.getLong("doelklankid");
+        long doelklankid = bundle.getLong("doelklankId");
+        gebruikerId = bundle.getLong("gebruikerId");
         paren = db.getParen();
         paren = db.getParenByDoelklankid(doelklankid);
         vulListView();
@@ -52,7 +54,8 @@ public class MinPaarKeuze extends AppCompatActivity {
     private void gaVerder(long id)
     {
         Bundle bundle = new Bundle();
-        bundle.putLong("paarid", id);
+        bundle.putLong("paarId", id);
+        bundle.putLong("gebruikerId" ,gebruikerId);
         Intent intent = new Intent(this, Spel_keuze.class);
         intent.putExtras(bundle);
         startActivity(intent);

@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private void login(long id)
     {
         Bundle bundle = new Bundle();
-        bundle.putLong("persoon", id);
+        bundle.putLong("gebruikerId", id);
         Intent intent = new Intent(this, Home.class);
         intent.putExtras(bundle);
         startActivity(intent);

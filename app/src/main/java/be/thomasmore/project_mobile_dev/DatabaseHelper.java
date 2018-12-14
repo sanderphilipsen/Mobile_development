@@ -148,8 +148,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     db.execSQL("INSERT INTO paar (id,eerstepaar,tweedepaar,doelklankId) VALUES (22,'fien','tien',10);");
     }
     private void insertSpelTypes(SQLiteDatabase db) {
-        db.execSQL("INSERT INTO speltype (id, naam) VALUES (1, 'Spel 1');");
-        db.execSQL("INSERT INTO speltype (id, naam) VALUES (2, 'Spel 2');");
+        db.execSQL("INSERT INTO speltype (id, naam) VALUES (1, 'Luister goed');");
+        db.execSQL("INSERT INTO speltype (id, naam) VALUES (2, 'Zeg het zelf eens');");
     }
 
     // methode wordt uitgevoerd als database geupgrade wordt
