@@ -12,7 +12,7 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
     // Database Name
     private static final String DATABASE_NAME = "Project";
 
@@ -63,6 +63,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "id INTEGER PRIMARY KEY," +
                 "naam TEXT)";
         db.execSQL(CREATE_TABLE_SPELTYPE);
+        String CREATE_TABLE_SPEL = "CREATE TABLE spel (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "gebruikerId INTEGER," +
+                "speltypeId INTEGER," +
+                "paarId INTEGER)";
+        db.execSQL(CREATE_TABLE_SPEL);
         insertGebruikers(db);
         insertStoornissen(db);
         insertKlanken(db);
@@ -72,11 +78,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-
-
+    // Insert Statements
     private void insertGebruikers(SQLiteDatabase db) {
-
-
+        db.execSQL("INSERT INTO gebruiker (id, voornaam, familienaam, token) VALUES (1, 'Christophe', 'Van Hoof','Krab')");
+        db.execSQL("INSERT INTO gebruiker (id, voornaam, familienaam, token) VALUES (2, 'Sander', 'Philipsen','Octo')");
     }
     private void insertStoornissen(SQLiteDatabase db) {
         db.execSQL("INSERT INTO stoornis (id,stoornis) VALUES (1, 'Stopping');");
@@ -142,7 +147,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     db.execSQL("INSERT INTO paar (id,eerstepaar,tweedepaar,doelklankId) VALUES (21,'fee','thee',10);");
                     db.execSQL("INSERT INTO paar (id,eerstepaar,tweedepaar,doelklankId) VALUES (22,'fien','tien',10);");
     }
-
     private void insertSpelTypes(SQLiteDatabase db) {
         db.execSQL("INSERT INTO speltype (id, naam) VALUES (1, 'Spel 1');");
         db.execSQL("INSERT INTO speltype (id, naam) VALUES (2, 'Spel 2');");
@@ -152,12 +156,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // hierin de vorige tabellen wegdoen en opnieuw creëren
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS Spel");
         db.execSQL("DROP TABLE IF EXISTS gebruiker");
         db.execSQL("DROP TABLE IF EXISTS stoornis");
         db.execSQL("DROP TABLE IF EXISTS klank");
         db.execSQL("DROP TABLE IF EXISTS doelklank");
         db.execSQL("DROP TABLE IF EXISTS paar");
         db.execSQL("DROP TABLE IF EXISTS speltype");
+        db.execSQL("DROP TABLE IF EXISTS Spel");
 
         // Create tables again
         onCreate(db);
@@ -180,7 +186,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return id;
     }
-
     // update-methode met ContentValues
     public boolean updateGebruiker(Gebruiker gebruiker) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -199,7 +204,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return numrows > 0;
     }
-
     // delete-methode
     public boolean deleteGebruiker(long id) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -213,7 +217,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return numrows > 0;
     }
 
-    // query-methode
     public Gebruiker getGebruiker(long id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -376,7 +379,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return paar;
     }
 
-    // rawQuery-methode
     public List<Gebruiker> getGebruikers() {
         List<Gebruiker> lijst = new ArrayList<Gebruiker>();
 
@@ -497,7 +499,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return lijst;
     }
-    // rawQuery-methode
     public List<Doelklank> getDoelklankenByKlankAndStoornis(long klankid, long stoornisid) {
         List<Doelklank> lijst = new ArrayList<Doelklank>();
 
@@ -538,7 +539,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return lijst;
     }
-    // rawQuery-methode
+    public List<Spel> getSpellen() {
+        List<Spel> lijst = new ArrayList<Spel>();
+
+        String selectQuery = "SELECT  * FROM spel ORDER BY id";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Spel spel = new Spel(cursor.getLong(0),
+                        cursor.getLong(1),
+                        cursor.getLong(2),
+                        cursor.getLong(3));
+                lijst.add(spel);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return lijst;
+    }
+
     public int getCountGebruikers() {
         String selectQuery = "SELECT  * FROM gebruiker";
 
@@ -550,5 +573,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return aantal;
     }
+
+
 
 }
