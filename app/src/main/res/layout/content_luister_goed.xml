@@ -7,5 +7,20 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".LuisterGoed"
     tools:showIn="@layout/activity_luister_goed">
-
+    <ImageView
+        android:id="@+id/token"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/oor"/>
+    <Button
+        android:id="@+id/Terug"
+        style="?android:attr/buttonStyleSmall"
+        android:background="@color/colorAccent"
+        android:textColor="#000"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center_horizontal|center"
+        android:text="Start"
+        android:onClick="speel_onClick"/>
 </android.support.constraint.ConstraintLayout>

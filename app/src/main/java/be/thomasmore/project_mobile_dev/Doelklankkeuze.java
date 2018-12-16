@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import be.thomasmore.project_mobile_dev.classes.Doelklank;
+import be.thomasmore.project_mobile_dev.classes.Spel;
 
 public class Doelklankkeuze extends AppCompatActivity {
     private DatabaseHelper db;
@@ -58,7 +59,7 @@ private void vulListView(){
             Bundle bundle = new Bundle();
             bundle.putLong("doelklankId", id);
             bundle.putLong("gebruikerId" , gebruikerId);
-            Intent intent = new Intent(this, MinPaarKeuze.class);
+            Intent intent = new Intent(this, Spel_keuze.class);
             intent.putExtras(bundle);
             startActivity(intent);
         }

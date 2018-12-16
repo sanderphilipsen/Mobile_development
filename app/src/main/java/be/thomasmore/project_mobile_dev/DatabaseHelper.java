@@ -20,7 +20,7 @@ import be.thomasmore.project_mobile_dev.classes.Stoornis;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 9;
+    private static final int DATABASE_VERSION = 10;
     // Database Name
     private static final String DATABASE_NAME = "Project";
 
@@ -58,13 +58,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY (klankId) REFERENCES klank(id), " +
                 "FOREIGN KEY (stoornisId) REFERENCES stoornis(id))";
         db.execSQL(CREATE_TABLE_DOELKLANK);
-        String CREATE_TABLE_PAAR = "CREATE TABLE paar (" +
+      /*  String CREATE_TABLE_PAAR = "CREATE TABLE paar (" +
                 "id INTEGER PRIMARY KEY," +
                 "eerstepaar TEXT," +
                 "tweedepaar TEXT, " +
                 "doelklankId INTEGER, " +
                 "FOREIGN KEY (doelklankId) REFERENCES doelklank(id))";
-        db.execSQL(CREATE_TABLE_PAAR);
+        db.execSQL(CREATE_TABLE_PAAR);*/
         String CREATE_TABLE_SPELTYPE = "CREATE TABLE speltype (" +
                 "id INTEGER PRIMARY KEY," +
                 "naam TEXT)";
@@ -73,16 +73,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "gebruikerId INTEGER," +
                 "speltypeId INTEGER," +
-                "paarId INTEGER, " +
+                "doelklankId INTEGER, " +
                 "FOREIGN KEY (gebruikerId) REFERENCES gebruiker(id), " +
-                "FOREIGN KEY (paarId) REFERENCES paar(id), " +
+                "FOREIGN KEY (doelklankId) REFERENCES doelklank(id), " +
                 "FOREIGN KEY (speltypeId) REFERENCES speltype(id))";
         db.execSQL(CREATE_TABLE_SPEL);
         insertGebruikers(db);
         insertStoornissen(db);
         insertKlanken(db);
         insertDoelklanken(db);
-        insertParen(db);
+       /* insertParen(db);*/
         insertSpelTypes(db);
 
     }
@@ -198,7 +198,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put("gebruikerId", spel.getGebruikerId());
         values.put("speltypeId", spel.getSpeltypeId());
-        values.put("paarId", spel.getPaarId());
+        values.put("doelklankId", spel.getDoelklankId());
         long id = db.insert("spel", null, values);
         db.close();
         return id;

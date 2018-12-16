@@ -18,7 +18,7 @@ public class Spel_keuze extends AppCompatActivity {
     public DatabaseHelper db;
     List<SpelType> speltypes = new ArrayList<SpelType>();
     public long gebruikerId;
-    public long paarId;
+    public long klankId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +28,7 @@ public class Spel_keuze extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Bundle bundle = getIntent().getExtras();
         gebruikerId =  bundle.getLong("gebruikerId");
-        paarId =  bundle.getLong("paarId");
+        klankId =  bundle.getLong("doelklankId");
         speltypes = db.getSpelTypes();
         vulListView();
     }
@@ -58,7 +58,7 @@ public class Spel_keuze extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putLong("speltypeId", id);
         bundle.putLong("gebruikerId" , gebruikerId);
-        bundle.putLong("paarId" , paarId);
+        bundle.putLong("doelklankId" , klankId);
         Intent intent;
         if (id == 1){
             intent = new Intent(this, LuisterGoed.class);

@@ -22,10 +22,16 @@ public class ZegHetZelfEens extends AppCompatActivity {
         setSupportActionBar(toolbar);
         spel = new Spel();
         Bundle bundle = getIntent().getExtras();
-
-        spel.setPaarId( bundle.getLong("paarId"));
+        
+        spel.setDoelklankId( bundle.getLong("doelklankId"));
         spel.setGebruikerId(bundle.getLong("gebruikerId"));
         spel.setSpeltypeId(bundle.getLong("speltypeId"));
        spelId = db.insertSpel(spel);
+
     }
-}
+
+    private void speel_onClick(View v) {
+
+    }
+    }
+

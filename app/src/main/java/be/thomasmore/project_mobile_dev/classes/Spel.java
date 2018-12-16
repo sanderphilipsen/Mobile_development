@@ -4,15 +4,15 @@ public class Spel {
     private long id;
     private long gebruikerId;
     private long speltypeId;
-    private long paarId;
+    private long doelklankId;
 
     public Spel() {}
 
-    public Spel(long id, long gebruikerId, long speltypeId, long paarId) {
+    public Spel(long id, long gebruikerId, long speltypeId, long doelklankId) {
         this.id = id;
         this.gebruikerId = gebruikerId;
         this.speltypeId = speltypeId;
-        this.paarId = paarId;
+        this.doelklankId = doelklankId;
     }
 
     public long getId() {
@@ -39,11 +39,11 @@ public class Spel {
         this.speltypeId = speltypeId;
     }
 
-    public long getPaarId() {
-        return paarId;
+    public long getDoelklankId() {
+        return doelklankId;
     }
 
-    public void setPaarId(long paarId) {
-        this.paarId = paarId;
+    public void setDoelklankId(long doelklankId) {
+        this.doelklankId = doelklankId;
     }
 }
