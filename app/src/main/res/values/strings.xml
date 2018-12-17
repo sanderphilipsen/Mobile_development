@@ -18,5 +18,7 @@
     <string name="title_activity_spel_keuze">Kies je favoriete spel</string>
     <string name="title_activity_zeg_het_zelf_eens">ZegHetZelfEens</string>
     <string name="title_activity_luister_goed">LuisterGoed</string>
+    <string name="Luister_goed_instructie">Steek je hoofdtelefoon in, als je klaar bent druk je op start. Let goed op!</string>
+
     <string name="uitleg_luister_goed">Je gaat zometeen een paar woordjes horen. Goed luisteren. Klik op start als je klaar bent</string>
 </resources>
