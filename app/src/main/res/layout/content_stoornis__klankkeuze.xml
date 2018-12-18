@@ -28,6 +28,8 @@
             android:layout_height="wrap_content"
             android:text="Kies de klank"
             />
+        </TableRow>
+        <TableRow>
         <RadioGroup
             android:id="@+id/klankgroep"
             android:layout_width="fill_parent"
@@ -52,7 +54,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Kies de stoornis"
-                />
+                /></TableRow>
+        <TableRow>
             <RadioGroup
                 android:id="@+id/stoornisgroep"
                 android:layout_width="fill_parent"
