@@ -2,12 +2,17 @@ package be.thomasmore.project_mobile_dev;
 import java.util.Random;
 import android.os.Bundle;
 import android.content.Intent;
+import android.view.Gravity;
 import android.widget.ImageView;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 import android.media.MediaPlayer;
+import android.widget.PopupWindow;
+import android.widget.LinearLayout;
+import android.view.ViewGroup.LayoutParams;
 import be.thomasmore.project_mobile_dev.classes.Spel;
 
 public class LuisterGoed extends AppCompatActivity {
@@ -16,9 +21,20 @@ public class LuisterGoed extends AppCompatActivity {
     public MediaPlayer player2;
     private DatabaseHelper db;
     public long spelId;
+    PopupWindow popupWindow;
+    LinearLayout layout;
+    TextView tv;
+    ImageView medaille;
+    LayoutParams params;
+    LinearLayout mainLayout;
     Random rand ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        popupWindow = new PopupWindow(this);
+        layout = new LinearLayout(this);
+        mainLayout = new LinearLayout(this);
+        tv = new TextView(this);
+        medaille = new ImageView(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_luister_goed);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -30,6 +46,13 @@ public class LuisterGoed extends AppCompatActivity {
         spel.setGebruikerId(bundle.getLong("gebruikerId"));
         spel.setSpeltypeId(bundle.getLong("speltypeId"));
         spelId = db.insertSpel(spel);
+        params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        layout.setOrientation(LinearLayout.VERTICAL);
+        tv.setText("Je hebt een minimedaille verdiend!");
+        medaille.setImageResource(R.drawable.minimedaille1);
+        layout.addView(medaille,params);
+        layout.addView(tv,params);
+        popupWindow.setContentView(layout);
     }
     public void speel_onClick(View v) {
         player = null;
@@ -88,29 +111,28 @@ public class LuisterGoed extends AppCompatActivity {
         if (player != null) {
             player.release();
             player = null;
-
         }
         if (player2 != null) {
             player2.release();
             player2 = null;
-
         }
     }
     private void goedGedaan() {
-        final ImageView imageView = (ImageView) findViewById(R.id.oor);
-        imageView.setImageResource(R.drawable.minimedaille1);
+      /*  final ImageView imageView = (ImageView) findViewById(R.id.medaille_popup);
+        imageView.setImageResource(R.drawable.minimedaille1);*/
+        popupWindow.showAtLocation(layout, Gravity.CENTER,10,10);
+        popupWindow.update(0,0,1000,1000);
         if (player != null) {
             player = MediaPlayer.create(this, R.raw.goed_gedaan);
             player.start();
             player2 = MediaPlayer.create(this, R.raw.applaus);
             player2.start();
-            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            player2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
                     stopPlayer();
                    terug_Naar_Home();
                 }
-
             });
         }
     }
