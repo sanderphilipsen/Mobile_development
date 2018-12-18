@@ -16,9 +16,11 @@
     <string name="title_activity_doelklankkeuze">Kies de doelklank</string>
     <string name="title_activity_min_paar_keuze">Kies het minimale paar</string>
     <string name="title_activity_spel_keuze">Kies je favoriete spel</string>
-    <string name="title_activity_zeg_het_zelf_eens">ZegHetZelfEens</string>
-    <string name="title_activity_luister_goed">LuisterGoed</string>
+    <string name="title_activity_zeg_het_zelf_eens">Zeg Het Zelf Eens</string>
+    <string name="title_activity_zeg_het_zelf_eens_kaarten">Zeg Het Zelf Eens</string>
+    <string name="title_activity_luister_goed">Luister Goed</string>
     <string name="Luister_goed_instructie">Steek je hoofdtelefoon in, als je klaar bent druk je op start. Let goed op!</string>
 
-    <string name="uitleg_luister_goed">Je gaat zometeen een paar woordjes horen. Goed luisteren. Klik op start als je klaar bent</string>
+    <string name="uitleg_luister_goed">Je gaat zo meteen een paar woordjes horen. Goed luisteren. Klik op start als je klaar bent</string>
+    <string name="uitleg_zeg_het_zelf_eens">Klik op een van de varkentjes en zeg wat je ziet. Jouw helper duidt dan de prent aan van het woordje dat jij gezegd hebt. Zijn de twee prenten hetzelfde, dan heb je het goed gezegd. Zijn de twee prenten niet hetzelfde, dan heb je een foutje gemaakt. Niet erg! Probeer het dan nog maar eens.</string>
 </resources>
