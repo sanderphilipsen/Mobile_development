@@ -1,4 +1,5 @@
 package be.thomasmore.project_mobile_dev;
+
 import java.util.Random;
 import android.os.Bundle;
 import android.content.Intent;
@@ -16,28 +17,26 @@ import android.widget.PopupWindow;
 import android.widget.LinearLayout;
 import android.view.ViewGroup.LayoutParams;
 import be.thomasmore.project_mobile_dev.classes.Spel;
+import be.thomasmore.project_mobile_dev.classes.Gebruiker;
 
 public class LuisterGoed extends AppCompatActivity {
     public Spel spel;
     public MediaPlayer player;
     public MediaPlayer player2;
-    private DatabaseHelper db;
+    public DatabaseHelper db;
     public long spelId;
-    PopupWindow popupWindow;
-    LinearLayout layout;
-    TextView tv;
-    ImageView medaille;
-    LayoutParams params;
-    LinearLayout mainLayout;
-    Random rand ;
-
-    @Override
+    public  PopupWindow popupWindow;
+    public  LinearLayout layout;
+    public TextView tv;
+    public ImageView medaille;
+    public   LayoutParams params;
+    public LinearLayout mainLayout;
+    public  Random rand ;
+    public Gebruiker gebruiker;
+     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_luister_goed);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         db = new DatabaseHelper(this);
         spel = new Spel();
         Bundle bundle = getIntent().getExtras();
@@ -45,7 +44,7 @@ public class LuisterGoed extends AppCompatActivity {
         spel.setGebruikerId(bundle.getLong("gebruikerId"));
         spel.setSpeltypeId(bundle.getLong("speltypeId"));
         spelId = db.insertSpel(spel);
-        setMedaillePopUp();
+        this.gebruiker = db.getGebruiker(bundle.getLong("gebruikerId"));
         popupWindow = new PopupWindow(this);
         layout = new LinearLayout(this);
         mainLayout = new LinearLayout(this);
@@ -54,16 +53,24 @@ public class LuisterGoed extends AppCompatActivity {
         params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         layout.setOrientation(LinearLayout.VERTICAL);
         tv.setText("Je hebt een minimedaille verdiend!");
-        medaille.setImageResource(R.drawable.minimedaille1);
+     //   medaille.setImageResource(R.drawable.minimedaille2);
         layout.addView(medaille,params);
         layout.addView(tv,params);
         popupWindow.setContentView(layout);
-
-
-
+        speel_instructie();
+    }
+    public void speel_instructie() {
+        player = MediaPlayer.create(this, R.raw.spel1bis);
+        player.start();
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+            player.stop();
+            player = null;
+            }
+        });
     }
     public void speel_onClick(View v) {
-        Log.i("1",String.valueOf(spel.getDoelklankId()));
         if (player == null) {
             switch (Integer.parseInt(String.valueOf(spel.getDoelklankId()))) {
                 case 1:
@@ -126,9 +133,6 @@ public class LuisterGoed extends AppCompatActivity {
         }
     }
 
-    public void setMedaillePopUp() {
-
-    }
     public void Stop_onClick(View v)
     {
         stopPlayer();
@@ -144,9 +148,9 @@ public class LuisterGoed extends AppCompatActivity {
         }
     }
     private void goedGedaan() {
-        popupWindow.showAtLocation(layout, Gravity.CENTER,10,10);
-        popupWindow.update(0,0,1000,1000);
-        if (player != null) {
+     /*   popupWindow.showAtLocation(layout, Gravity.CENTER,10,10);
+            popupWindow.update(0,0,1000,1000);*/
+            if (player != null) {
             player = MediaPlayer.create(this, R.raw.goed_gedaan);
             player.start();
             player2 = MediaPlayer.create(this, R.raw.applaus);
@@ -167,10 +171,20 @@ public class LuisterGoed extends AppCompatActivity {
     }
     public void terug_Naar_Home() {
         Bundle bundle = new Bundle();
+        AddMedaille();
         bundle.putLong("gebruikerId", spel.getGebruikerId());
-        Intent intent = new Intent(this, Home.class);
+        Intent intent = new Intent(this, Goedgedaan.class);
         intent.putExtras(bundle);
         startActivity(intent);
+    }
+    public void AddMedaille() {
+        if (this.gebruiker.getMinimedaillesluistergoed()==5){
+            this.gebruiker.setGrotemedaillesluistergoed(this.gebruiker.getGrotemedaillesluistergoed()+1);
+            this.gebruiker.setMinimedaillesluistergoed(Long.parseLong("0"));
+        }
+        else{
+            this.gebruiker.setMinimedaillesluistergoed(this.gebruiker.getMinimedaillesluistergoed()+1);
+        }
     }
     @Override
     protected void onStop() {

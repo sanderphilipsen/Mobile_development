@@ -29,18 +29,23 @@ public class HomeFragment extends Fragment {
     }
     public void Set_Token(Gebruiker gebruiker ,View view){
         final ImageView imageViewToken = (ImageView) view.findViewById(R.id.token);
+        final TextView textToken = (TextView) view.findViewById(R.id.teksttoken);
         switch (gebruiker.getToken()){
             case  "Spongebob" :
                 imageViewToken.setImageResource(R.drawable.spongebob);
+                textToken.setText("Klik op Spongebob om te spelen!" );
                 break;
             case  "Patrick" :
                 imageViewToken.setImageResource(R.drawable.patrick);
+                textToken.setText("Klik op Patrick om te spelen!" );
                 break;
             case  "Octo" :
                 imageViewToken.setImageResource(R.drawable.octo);
+                textToken.setText("Klik op Octo om te spelen!" );
                 break;
             case  "Krab" :
                 imageViewToken.setImageResource(R.drawable.krabs);
+                textToken.setText("Klik op Krabs om te spelen!" );
                 break;
 
         }

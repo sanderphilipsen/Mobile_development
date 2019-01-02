@@ -43,18 +43,22 @@
             android:textAlignment="center"
             android:layout_marginHorizontal="20dp"
             android:text="@string/uitleg_luister_goed"/>
-
         <Button
-            android:id="@+id/speelZegHetZelfEens"
-            style="?android:attr/buttonStyleSmall"
-            android:background="@color/colorAccent"
-            android:textColor="#000"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_gravity="center_horizontal|center"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:textAlignment="center"
             android:text="Start"
-            android:onClick="speel_onClick"/>
+            android:onClick="speel_onClick"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/submit"
+            android:id="@+id/speelLuistergoed"
+            />
+
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

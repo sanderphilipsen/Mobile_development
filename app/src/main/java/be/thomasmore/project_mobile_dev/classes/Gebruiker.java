@@ -5,10 +5,10 @@ public class Gebruiker {
     private String voornaam;
     private String familienaam;
     private String token;
-    private Number minimedaillesluistergoed;
-    private Number grotemedaillesluistergoed;
-    private Number minimedailleszeg;
-    private Number grotemedailleszeg;
+    private Long minimedaillesluistergoed;
+    private Long grotemedaillesluistergoed;
+    private Long minimedailleszeg;
+    private Long grotemedailleszeg;
 
 
 
@@ -47,42 +47,42 @@ public class Gebruiker {
         this.familienaam = familienaam;
     }
 
-    public Number getMinimedaillesluistergoed() {
+    public Long getMinimedaillesluistergoed() {
         return minimedaillesluistergoed;
     }
 
-    public void setMinimedaillesluistergoed(Number minimedaillesluistergoed) {
+    public void setMinimedaillesluistergoed(Long minimedaillesluistergoed) {
         this.minimedaillesluistergoed = minimedaillesluistergoed;
     }
 
-    public Number getGrotemedaillesluistergoed() {
+    public Long getGrotemedaillesluistergoed() {
         return grotemedaillesluistergoed;
     }
 
-    public void setGrotemedaillesluistergoed(Number grotemedaillesluistergoed) {
+    public void setGrotemedaillesluistergoed(Long grotemedaillesluistergoed) {
         this.grotemedaillesluistergoed = grotemedaillesluistergoed;
     }
 
-    public Number getMinimedailleszeg() {
+    public Long getMinimedailleszeg() {
         return minimedailleszeg;
     }
 
-    public void setMinimedailleszeg(Number minimedailleszeg) {
+    public void setMinimedailleszeg(Long minimedailleszeg) {
         this.minimedailleszeg = minimedailleszeg;
     }
 
-    public Number getGrotemedailleszeg() {
+    public Long getGrotemedailleszeg() {
         return grotemedailleszeg;
     }
 
-    public void setGrotemedailleszeg(Number grotemedaillezeg) {
-        this.grotemedailleszeg = grotemedaillezeg;
+    public void setGrotemedailleszeg(Long grotemedailleszeg) {
+        this.grotemedailleszeg = grotemedailleszeg;
     }
 
     @Override
     public String toString() {return voornaam + " " + familienaam; }
     public String welkom() {return voornaam;}
-    public Gebruiker(long id, String voornaam, String familienaam, String token, Number minimedaillesluistergoed, Number grotemedaillesluistergoed, Number minimedailleszeg, Number grotemedailleszeg) {
+    public Gebruiker(long id, String voornaam, String familienaam, String token, Long minimedaillesluistergoed, Long grotemedaillesluistergoed, Long minimedailleszeg, Long grotemedailleszeg) {
         this.id = id;
         this.voornaam = voornaam;
         this.familienaam = familienaam;

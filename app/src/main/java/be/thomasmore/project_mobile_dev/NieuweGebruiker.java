@@ -1,6 +1,7 @@
 package be.thomasmore.project_mobile_dev;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -21,15 +22,33 @@ public class NieuweGebruiker extends AppCompatActivity {
         setContentView(R.layout.activity_nieuwe_gebruiker);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        final RadioGroup rg = (RadioGroup) findViewById(R.id.token);
+        final RadioButton rb_spongebob = (RadioButton) findViewById(R.id.spongebob);
+        final RadioButton rb_octo = (RadioButton) findViewById(R.id.octo);
+        final RadioButton rb_patrick = (RadioButton) findViewById(R.id.patrick);
+        final RadioButton rb_krabs = (RadioButton) findViewById(R.id.krab);
         db = new DatabaseHelper(this);
-      /*  FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
-       /*     }
-        });*/
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                rb_octo.setBackgroundColor(Color.TRANSPARENT);
+                rb_patrick.setBackgroundColor(Color.TRANSPARENT);
+                rb_krabs.setBackgroundColor(Color.TRANSPARENT);
+                rb_spongebob.setBackgroundColor(Color.TRANSPARENT);
+                if (rb_spongebob.isChecked()) {
+                    rb_spongebob.setBackgroundResource(R.drawable.spongebob);
+                }
+                if (rb_octo.isChecked()) {
+                    rb_octo.setBackgroundResource(R.drawable.octo);
+                }
+                if (rb_patrick.isChecked()) {
+                    rb_patrick.setBackgroundResource(R.drawable.patrick);
+                }
+                if (rb_krabs.isChecked()) {
+                    rb_krabs.setBackgroundResource(R.drawable.krabs);
+                }
+            }
+        });
     }
     public void knopAdd_onClick(View v){
         EditText editVoornaam = (EditText) findViewById(R.id.voornaam);
@@ -37,7 +56,22 @@ public class NieuweGebruiker extends AppCompatActivity {
         int selectedToken = tokenGroup.getCheckedRadioButtonId();
         radioButtonToken = (RadioButton) findViewById(selectedToken);
         String voornaam = editVoornaam.getText().toString();
-        String token = radioButtonToken.getText().toString();
+        String token ="";
+        switch (radioButtonToken.getId()) {
+            case R.id.spongebob:
+                token = "Spongebob";
+                break;
+            case R.id.patrick:
+                token = "Patrick";
+                break;
+            case R.id.krab:
+                token= "Krab";
+                break;
+            case R.id.octo:
+                token= "Octo";
+                break;
+        }
+
         EditText editFamilienaam = (EditText) findViewById(R.id.familienaam);
         String familienaam = editFamilienaam.getText().toString();
         Gebruiker gebruiker = new Gebruiker();
@@ -48,9 +82,6 @@ public class NieuweGebruiker extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-    public void knopBack_onClick(View v){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
+
 
 }

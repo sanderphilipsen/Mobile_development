@@ -8,6 +8,7 @@ import android.widget.RadioGroup;
 import android.graphics.Color;
 import java.util.ArrayList;
 import java.util.List;
+import android.widget.Toast;
 import be.thomasmore.project_mobile_dev.classes.Gebruiker;
 import be.thomasmore.project_mobile_dev.classes.Klank;
 import be.thomasmore.project_mobile_dev.classes.Stoornis;
@@ -80,22 +81,30 @@ public class Stoornis_Klankkeuze extends AppCompatActivity {
         });
     }
     public void  geefKeuzedoor_onClick(View v){
-        stoornisGroup = (RadioGroup) findViewById(R.id.stoornisgroep);
-        klankGroup = (RadioGroup) findViewById(R.id.klankgroep);
-        int selectedStoornis = stoornisGroup.getCheckedRadioButtonId();
-        int selectedKlank = klankGroup.getCheckedRadioButtonId();
-        radioButtonStoornis = (RadioButton) findViewById(selectedStoornis);
-        radioButtonKlank = (RadioButton) findViewById(selectedKlank);
-        klank  = db.getKlankByKlank(radioButtonKlank.getText().toString());
-        stoornissen= db.getStoornissen();
-        String test = radioButtonStoornis.getText().toString();
-        stoornis = db.getStoornisByStoornis(test);
-           Intent intent = new Intent(this, Doelklankkeuze.class);
-        Bundle bundle = new Bundle();
-        bundle.putLong("gebruikerId", gebruikerId);
-        bundle.putLong("klankId", klank.getId());
-        bundle.putLong("stoornisId", stoornis.getId());
-        intent.putExtras(bundle);
-        startActivity(intent);
+
+
+        try {
+            stoornisGroup = (RadioGroup) findViewById(R.id.stoornisgroep);
+            klankGroup = (RadioGroup) findViewById(R.id.klankgroep);
+            int selectedStoornis = stoornisGroup.getCheckedRadioButtonId();
+            int selectedKlank = klankGroup.getCheckedRadioButtonId();
+            radioButtonStoornis = (RadioButton) findViewById(selectedStoornis);
+            radioButtonKlank = (RadioButton) findViewById(selectedKlank);
+            klank  = db.getKlankByKlank(radioButtonKlank.getText().toString());
+            stoornissen= db.getStoornissen();
+            String test = radioButtonStoornis.getText().toString();
+            stoornis = db.getStoornisByStoornis(test);
+            Intent intent = new Intent(this, Doelklankkeuze.class);
+            Bundle bundle = new Bundle();
+            bundle.putLong("gebruikerId", gebruikerId);
+            bundle.putLong("klankId", klank.getId());
+            bundle.putLong("stoornisId", stoornis.getId());
+
+            intent.putExtras(bundle);
+            startActivity(intent);
+        } catch (Exception e){
+            Toast.makeText(v.getContext(), "Je moet een klank en stoornis selecteren", Toast.LENGTH_LONG);
+        }
+
     }
 }

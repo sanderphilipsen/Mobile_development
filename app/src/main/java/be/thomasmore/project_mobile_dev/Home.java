@@ -2,6 +2,7 @@ package be.thomasmore.project_mobile_dev;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -28,7 +29,6 @@ public class Home extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         gebruikerId = bundle.getLong("gebruikerId");
         gebruiker = db.getGebruiker(gebruikerId);
-    /*    Set_Token(gebruiker);*/
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
@@ -86,16 +86,6 @@ public class Home extends AppCompatActivity {
             case  "Krab" :
                 imageViewToken.setImageResource(R.drawable.krabs);
                 break;
-        }
-    }
-    public void Set_MedailleMuur(Gebruiker gebruiker){
-        final ImageView smedailleluistergoed = (ImageView) findViewById(R.id.supermedailleluistergoed);
-        final ImageView mmedailleluistergoed = (ImageView) findViewById(R.id.minimedailleluistergoed);
-        if (Integer.parseInt(String.valueOf(this.gebruiker.getGrotemedailleszeg()))>0) {
-            smedailleluistergoed.setImageResource(R.drawable.supermedaillegrijs);
-        }
-        else {
-            smedailleluistergoed.setImageResource(R.drawable.supermedaille1);
         }
     }
 }

@@ -56,6 +56,10 @@
         <activity
             android:name=".LuisterGoedUitleg"
             android:label="@string/title_activity_luister_goed_uitleg"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Goedgedaan"
+            android:label="@string/title_activity_goedgedaan"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -20,7 +20,7 @@ import be.thomasmore.project_mobile_dev.classes.Stoornis;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 12;
+    private static final int DATABASE_VERSION = 14;
     // Database Name
     private static final String DATABASE_NAME = "Project";
 
@@ -193,8 +193,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("voornaam", gebruiker.getVoornaam());
         values.put("familienaam", gebruiker.getFamilienaam());
         values.put("token", gebruiker.getToken());
-        values.put("minimedailles", 0);
-        values.put("grotemedailles", 0);
+        values.put("minimedaillesluistergoed", 0);
+        values.put("grotemedaillesluistergoed", 0);
+        values.put("minimedailleszeg", 0);
+        values.put("grotemedailleszeg", 0);
         long id = db.insert("gebruiker", null, values);
 
         db.close();
@@ -211,14 +213,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return id;
     }
     // update-methode met ContentValues
-    public boolean updateGebruiker(Gebruiker gebruiker) {
+
+    public boolean UpdateGebruiker(Gebruiker gebruiker) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put("voornaam", gebruiker.getVoornaam());
         values.put("familienaam", gebruiker.getFamilienaam());
         values.put("token", gebruiker.getToken());
-
+        values.put("minimedaillesluistergoed", gebruiker.getMinimedaillesluistergoed());
+        values.put("grotemedaillesluistergoed", gebruiker.getGrotemedaillesluistergoed());
+        values.put("minimedailleszeg", gebruiker.getMinimedailleszeg());
+        values.put("grotemedailleszeg", gebruiker.getGrotemedailleszeg());
         int numrows = db.update(
                 "gebruiker",
                 values,
