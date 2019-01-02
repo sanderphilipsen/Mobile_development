@@ -20,7 +20,7 @@ import be.thomasmore.project_mobile_dev.classes.Stoornis;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 10;
+    private static final int DATABASE_VERSION = 12;
     // Database Name
     private static final String DATABASE_NAME = "Project";
 
@@ -40,7 +40,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "voornaam TEXT," +
                 "familienaam TEXT," +
-                "token TEXT)";
+                "token TEXT," +
+                "grotemedailleszeg NUMBER," +
+                "minimedailleszeg NUMBER,"+
+                "minimedaillesluistergoed NUMBER," +
+                "grotemedaillesluistergoed NUMBER)" ;
+
         db.execSQL(CREATE_TABLE_GEBRUIKER);
         String CREATE_TABLE_STOORNIS = "CREATE TABLE stoornis (" +
                 "id INTEGER PRIMARY KEY," +
@@ -89,8 +94,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Insert Statements
     private void insertGebruikers(SQLiteDatabase db) {
-        db.execSQL("INSERT INTO gebruiker (id, voornaam, familienaam, token) VALUES (1, 'Christophe', 'Van Hoof','Krab')");
-        db.execSQL("INSERT INTO gebruiker (id, voornaam, familienaam, token) VALUES (2, 'Sander', 'Philipsen','Octo')");
+        db.execSQL("INSERT INTO gebruiker (id, voornaam, familienaam, token, grotemedailleszeg, minimedailleszeg, grotemedaillesluistergoed, minimedaillesluistergoed) VALUES (1, 'Christophe', 'Van Hoof','Krab',0,0,0,0)");
+        db.execSQL("INSERT INTO gebruiker (id, voornaam, familienaam, token, grotemedailleszeg, minimedailleszeg, grotemedaillesluistergoed, minimedaillesluistergoed) VALUES (2, 'Sander', 'Philipsen','Octo',0,0,0,0)");
     }
     private void insertStoornissen(SQLiteDatabase db) {
         db.execSQL("INSERT INTO stoornis (id,stoornis) VALUES (1, 'Stopping');");
@@ -188,6 +193,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("voornaam", gebruiker.getVoornaam());
         values.put("familienaam", gebruiker.getFamilienaam());
         values.put("token", gebruiker.getToken());
+        values.put("minimedailles", 0);
+        values.put("grotemedailles", 0);
         long id = db.insert("gebruiker", null, values);
 
         db.close();
@@ -239,7 +246,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         Cursor cursor = db.query(
                 "gebruiker",      // tabelnaam
-                new String[] { "id", "voornaam", "familienaam","token" }, // kolommen
+                new String[] { "id", "voornaam", "familienaam","token","minimedaillesluistergoed","grotemedaillesluistergoed", "minimedailleszeg", "grotemedailleszeg" }, // kolommen
                 "id = ?",  // selectie
                 new String[] { String.valueOf(id) }, // selectieparameters
                 null,           // groupby
@@ -251,7 +258,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         int d = cursor.getCount();
         if (cursor.moveToFirst()) {
             gebruiker = new Gebruiker(cursor.getLong(0),
-                    cursor.getString(1), cursor.getString(2),cursor.getString(3));
+                    cursor.getString(1), cursor.getString(2),cursor.getString(3),cursor.getLong(4),cursor.getLong(5), cursor.getLong(6), cursor.getLong(7));
         }
         cursor.close();
         db.close();
@@ -407,7 +414,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Gebruiker gebruiker = new Gebruiker(cursor.getLong(0),
-                        cursor.getString(1), cursor.getString(2),cursor.getString(3));
+                        cursor.getString(1), cursor.getString(2),cursor.getString(3), cursor.getLong(4),cursor.getLong(5), cursor.getLong(6), cursor.getLong(7));
                 lijst.add(gebruiker);
             } while (cursor.moveToNext());
         }

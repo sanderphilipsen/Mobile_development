@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.view.Gravity;
 import android.widget.ImageView;
 import android.os.Bundle;
+import android.util.Log;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.media.AudioManager;
 import android.widget.TextView;
 import android.media.MediaPlayer;
 import android.widget.PopupWindow;
@@ -28,6 +30,7 @@ public class LuisterGoed extends AppCompatActivity {
     LayoutParams params;
     LinearLayout mainLayout;
     Random rand ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -36,48 +39,80 @@ public class LuisterGoed extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         db = new DatabaseHelper(this);
-        newSpel();
+        spel = new Spel();
+        Bundle bundle = getIntent().getExtras();
+        spel.setDoelklankId(bundle.getLong("doelklankId"));
+        spel.setGebruikerId(bundle.getLong("gebruikerId"));
+        spel.setSpeltypeId(bundle.getLong("speltypeId"));
+        spelId = db.insertSpel(spel);
         setMedaillePopUp();
+        popupWindow = new PopupWindow(this);
+        layout = new LinearLayout(this);
+        mainLayout = new LinearLayout(this);
+        medaille = new ImageView(this);
+        tv = new TextView(this);
+        params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        layout.setOrientation(LinearLayout.VERTICAL);
+        tv.setText("Je hebt een minimedaille verdiend!");
+        medaille.setImageResource(R.drawable.minimedaille1);
+        layout.addView(medaille,params);
+        layout.addView(tv,params);
+        popupWindow.setContentView(layout);
+
+
 
     }
     public void speel_onClick(View v) {
-        player = null;
+        Log.i("1",String.valueOf(spel.getDoelklankId()));
         if (player == null) {
             switch (Integer.parseInt(String.valueOf(spel.getDoelklankId()))) {
                 case 1:
+                    Log.i("1","gaat creeren");
                     player = MediaPlayer.create(this, R.raw.reeks1);
                     break;
                 case 2:
+                    Log.i("1","gaat creeren");
+
                     player = MediaPlayer.create(this, R.raw.reeks5);
                     break;
                 case 3:
+                    Log.i("1","gaat creeren");
+
                     player = MediaPlayer.create(this, R.raw.reeks3);
                     break;
                 case 4:
+                    Log.i("1","gaat creeren");
+
                     player = MediaPlayer.create(this, R.raw.reeks2);
                     break;
                 case 5:
+                    Log.i("1","gaat creeren");
+
                     player = MediaPlayer.create(this, R.raw.reeks4);
                     break;
                 case 6:
+                    Log.i("1","gaat creeren");
+
                     player = MediaPlayer.create(this, R.raw.reeks6);
                     break;
                 case 7:
+                    Log.i("1","gaat creeren");
+
                     player = MediaPlayer.create(this, R.raw.reeks3);
                     break;
                 case 8:
+                    Log.i("1","gaat creeren");
+
                     player = MediaPlayer.create(this, R.raw.reeks4);
                     break;
                 case 9:
-                    int randomNum = rand.nextInt((1 - 0) + 1);
-                    if (randomNum == 1) {
-                        player = MediaPlayer.create(this, R.raw.reeks7);
-                    }
-                    else {
-                        player = MediaPlayer.create(this, R.raw.reeks8);
-                    }
+                    Log.i("1","gaat creeren");
+
+                    player = MediaPlayer.create(this, R.raw.reeks8);
                     break;
                 case 10:
+                    Log.i("1","gaat creeren");
+
                     player = MediaPlayer.create(this, R.raw.reeks9);
             }
             player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -86,29 +121,13 @@ public class LuisterGoed extends AppCompatActivity {
                 goedGedaan();
                 }
             });
+            Log.i("d","wilt starten");
             player.start();
         }
     }
-    public void newSpel() {
-        spel = new Spel();
-        Bundle bundle = getIntent().getExtras();
-        spel.setDoelklankId(bundle.getLong("doelklankId"));
-        spel.setGebruikerId(bundle.getLong("gebruikerId"));
-        spel.setSpeltypeId(bundle.getLong("speltypeId"));
-        spelId = db.insertSpel(spel);
-    }
+
     public void setMedaillePopUp() {
-        popupWindow = new PopupWindow(this);
-        layout = new LinearLayout(this);
-        mainLayout = new LinearLayout(this);
-        medaille = new ImageView(this);
-        params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        layout.setOrientation(LinearLayout.VERTICAL);
-        tv.setText("Je hebt een minimedaille verdiend!"); 
-        medaille.setImageResource(R.drawable.minimedaille1);
-        layout.addView(medaille,params);
-        layout.addView(tv,params);
-        popupWindow.setContentView(layout);
+
     }
     public void Stop_onClick(View v)
     {

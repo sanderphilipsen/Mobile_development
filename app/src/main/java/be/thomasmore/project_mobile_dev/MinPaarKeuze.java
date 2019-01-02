@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -34,12 +35,11 @@ public class MinPaarKeuze extends AppCompatActivity {
 
     }
     private void vulListView(){
-        ArrayAdapter<Paar> adapter =
+    ArrayAdapter<Paar> adapter =
                 new ArrayAdapter<Paar>(this,
-                        android.R.layout.simple_list_item_1, paren);
+                        android.R.layout.simple_list_item_2, paren);
 
-        final ListView listViewParen =
-                (ListView) findViewById(R.id.listViewPaar);
+        final GridView listViewParen = (GridView) findViewById(R.id.listViewPaar);
         listViewParen.setAdapter(adapter);
 
         listViewParen.setOnItemClickListener(

@@ -7,7 +7,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MinPaarKeuze"
     tools:showIn="@layout/activity_min_paar_keuze">
-    <ListView
+    <GridView
         android:id="@+id/listViewPaar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

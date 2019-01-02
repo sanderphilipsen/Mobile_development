@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/spongebobbackground"
+    android:baselineAlignBottom="true"
+    android:gravity="left|center">
+
+    <TextView
+        android:textColor="#000"
+        android:background="@drawable/roundbuttons"
+        android:fontFamily="@font/robotoregular"
+        android:id="@+id/welkom"
+        android:layout_width="150dp"
+        android:layout_height="140dp"
+        android:paddingLeft="17dp"
+        android:paddingTop="34dp"
+        android:paddingRight="10dp"
+        android:textSize="16dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="10dp"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+       />
+    <ImageView
+        android:onClick="Speel_onClick"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:id="@+id/token"
+        android:layout_width="fill_parent"
+        android:layout_height="170dp"
+        />
+
+    <TextView
+        android:text="Klik op Octo om het spel te starten!"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_gravity="center_horizontal|center"
+        />
+<!--
+    <Button
+        android:background="@drawable/roundbuttons"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="40dp"
+        android:textSize="25dp"
+        android:padding="20dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center"
+        android:text="Speel"
+        />-->
+</LinearLayout>

@@ -2,93 +2,139 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/spongebobbackground"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Stoornis_Klankkeuze"
     tools:showIn="@layout/activity_stoornis__klankkeuze">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/db1_root"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
-
-
-        <TableRow>
-        <TextView
-            android:id="@+id/klank"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kies de klank"
-            />
-        </TableRow>
-        <TableRow>
-        <RadioGroup
-            android:id="@+id/klankgroep"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-            <RadioButton
-                android:id="@+id/klank1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Finaal" />
-            <RadioButton
-                android:id="@+id/klank2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Initiaal" />
-        </RadioGroup>
-    </TableRow>
-        <TableRow>
-            <TextView
-                android:id="@+id/stoornis"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kies de stoornis"
-                /></TableRow>
-        <TableRow>
-            <RadioGroup
-                android:id="@+id/stoornisgroep"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-                <RadioButton
-                    android:id="@+id/stoor2"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Fronting" />
-                <RadioButton
-                    android:id="@+id/stoor1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Stopping" />
-            </RadioGroup>
-        </TableRow>
-        <TableRow>
-          <Button
-        android:id="@+id/geefkeuzedoor"
-        style="?android:attr/buttonStyleSmall"
-        android:background="@color/colorAccent"
-        android:textColor="@color/colorPrimary"
-        android:layout_width="fill_parent"
-        android:layout_marginTop="10dp"
+ <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+     android:fontFamily="@font/robotoregular"
+   >
+    <TextView
+        android:textColor="#000"
+        android:text="Kies de klank"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center"
-        android:text="ga verder"
-        android:onClick="geefKeuzedoor_onClick"/>
-        </TableRow>
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:includeFontPadding="false"/>
 
-    </TableLayout>
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:id="@+id/klankrow"
+                android:weightSum="2">
+                <RadioGroup
+                    android:layout_weight="2"
+                    android:layout_gravity="center_horizontal|center"
+                    android:id="@+id/klankgroep"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_above="@+id/klankrow"
+                    >
+            <RadioButton
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:height="150dp"
+                android:id="@+id/klank1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:text="Finaal"
+                android:textSize="17dp"
+                android:button="@null"
+                />
+            <RadioButton
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:layout_width="100dp"
+                android:textAlignment="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:height="150dp"
+                android:id="@+id/klank2"
+                android:text="Initiaal"
+                android:textSize="17dp"
+                android:button="@null"
+               />
+                </RadioGroup>
+            </TableRow>
+            <TextView
+                android:text="Kies de stoornis"
+                android:layout_marginTop="40dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:textColor="#000"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                />
+                <TableRow
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:weightSum="2"
+                    android:id="@+id/stoornisrow"
+                   >
+                    <RadioGroup
+                        android:layout_weight="2"
+                        android:layout_gravity="center_horizontal|center"
+                        android:id="@+id/stoornisgroep"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:layout_above="@+id/stoornisrow"
+                        >
+                <RadioButton
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:height="150dp"
+                    android:id="@+id/stoor2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:text="Fronting"
+                    android:textSize="17dp"
+                    android:button="@null" />
+                <RadioButton
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:height="150dp"
+                    android:id="@+id/stoor1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:text="Stopping"
+                    android:textSize="17dp"
+                    android:button="@null" />
+                    </RadioGroup>
+                </TableRow>
 
-    </LinearLayout>
+         <Button
+             android:layout_marginLeft="50dp"
+             android:layout_marginRight="50dp"
+             android:layout_marginTop="40dp"
+             android:gravity="center"
+             android:textAlignment="center"
+             android:id="@+id/geefkeuzedoor"
+             android:text="Ga verder"
+             android:textColor="#000"
+             android:textSize="18sp"
+             android:layout_width="wrap_content"
+             android:layout_height="50dp"
+             android:background="@drawable/submit"
+             android:onClick="geefKeuzedoor_onClick"
+             />
+
+
+ </TableLayout>
 </android.support.constraint.ConstraintLayout>
