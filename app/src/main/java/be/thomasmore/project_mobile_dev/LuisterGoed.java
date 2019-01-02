@@ -173,7 +173,7 @@ public class LuisterGoed extends AppCompatActivity {
         Bundle bundle = new Bundle();
         AddMedaille();
         bundle.putLong("gebruikerId", spel.getGebruikerId());
-        Intent intent = new Intent(this, Goedgedaan.class);
+        Intent intent = new Intent(this, Home.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }

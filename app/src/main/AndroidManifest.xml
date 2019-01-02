@@ -58,8 +58,8 @@
             android:label="@string/title_activity_luister_goed_uitleg"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Goedgedaan"
-            android:label="@string/title_activity_goedgedaan"
+            android:name=".GoedGedaan"
+            android:label="@string/title_activity_goed_gedaan"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
