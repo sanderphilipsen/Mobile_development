@@ -58,21 +58,12 @@
             android:label="@string/title_activity_luister_goed_uitleg"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-<<<<<<< .merge_file_CvVOQz
-            android:name=".GoedGedaan"
-            android:label="@string/title_activity_goed_gedaan"
-=======
-            android:name=".Goedgedaan"
-            android:label="@string/title_activity_goedgedaan"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".ZegHetZelfEensUitleg"
             android:label="@string/title_activity_zeg_het_zelf_eens_uitleg"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ZegHetZelfEensKaart"
             android:label="@string/title_activity_zeg_het_zelf_eens_kaart"
->>>>>>> .merge_file_kWJ4mg
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

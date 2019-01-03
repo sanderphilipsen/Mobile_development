@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.Toast;
 import java.util.Random;
 
 import be.thomasmore.project_mobile_dev.classes.Paar;
@@ -115,7 +114,7 @@ public class ZegHetZelfEens extends AppCompatActivity {
 
         Bundle bundle = new Bundle();
         bundle.putLong("gebruikerId" , gebruikerId);
-        Intent intent = new Intent(this, Goedgedaan.class);
+        Intent intent = new Intent(this, Home.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }
