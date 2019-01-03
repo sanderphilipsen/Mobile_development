@@ -60,6 +60,14 @@
         <activity
             android:name=".Goedgedaan"
             android:label="@string/title_activity_goedgedaan"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ZegHetZelfEensUitleg"
+            android:label="@string/title_activity_zeg_het_zelf_eens_uitleg"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ZegHetZelfEensKaart"
+            android:label="@string/title_activity_zeg_het_zelf_eens_kaart"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

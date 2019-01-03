@@ -22,7 +22,13 @@
     <string name="Luister_goed_instructie">Steek je hoofdtelefoon in, als je klaar bent druk je op start. Let goed op!</string>
 
     <string name="uitleg_luister_goed">Je kan pas op start drukken als je oortjes hebt ingestoken.</string>
-    <string name="uitleg_zeg_het_zelf_eens">Klik op een van de varkentjes en zeg wat je ziet. Jouw helper duidt dan de prent aan van het woordje dat jij gezegd hebt. Zijn de twee prenten hetzelfde, dan heb je het goed gezegd. Zijn de twee prenten niet hetzelfde, dan heb je een foutje gemaakt. Niet erg! Probeer het dan nog maar eens.</string>
+    <string name="zeg_het_zelf_eens_kies">Kies de woordjes die je wil oefenen</string>
+    <string name="zeg_het_zelf_eens_label_uitleg">
+        Speluitleg
+    </string>
+    <string name="zeg_het_zelf_eens_uitleg">Klik op een van de varkentjes en zeg wat je ziet. Jouw helper duidt dan de prent aan van het woordje dat jij gezegd hebt. Zijn de twee prenten hetzelfde, dan heb je het goed gezegd. Zijn de twee prenten niet hetzelfde, dan heb je een foutje gemaakt. Niet erg! Probeer het dan nog maar eens.</string>
     <string name="title_activity_luister_goed_uitleg">LuisterGoedUitleg</string>
-    <string name="title_activity_goedgedaan">Goedgedaan</string>
+    <string name="title_activity_goedgedaan">Goed gedaan</string>
+    <string name="title_activity_zeg_het_zelf_eens_uitleg">Zeg Het Zelf Eens</string>
+    <string name="title_activity_zeg_het_zelf_eens_kaart">ZegHetZelfEensKaart</string>
 </resources>
