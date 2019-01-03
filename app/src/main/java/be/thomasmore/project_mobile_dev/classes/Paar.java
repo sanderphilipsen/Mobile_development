@@ -38,7 +38,7 @@ public class Paar {
         this.doelklankId = doelklankId;
     }
     @Override
-    public String toString() {return eerstepaar + "-" + tweedepaar;}
+    public String toString() {return eerstepaar + " - " + tweedepaar;}
     public Paar() {
     }
 

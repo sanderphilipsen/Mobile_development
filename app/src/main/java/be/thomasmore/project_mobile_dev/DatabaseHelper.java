@@ -20,7 +20,7 @@ import be.thomasmore.project_mobile_dev.classes.Stoornis;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 14;
+    private static final int DATABASE_VERSION = 16;
     // Database Name
     private static final String DATABASE_NAME = "Project";
 
@@ -63,13 +63,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY (klankId) REFERENCES klank(id), " +
                 "FOREIGN KEY (stoornisId) REFERENCES stoornis(id))";
         db.execSQL(CREATE_TABLE_DOELKLANK);
-      /*  String CREATE_TABLE_PAAR = "CREATE TABLE paar (" +
+        String CREATE_TABLE_PAAR = "CREATE TABLE paar (" +
                 "id INTEGER PRIMARY KEY," +
                 "eerstepaar TEXT," +
                 "tweedepaar TEXT, " +
                 "doelklankId INTEGER, " +
                 "FOREIGN KEY (doelklankId) REFERENCES doelklank(id))";
-        db.execSQL(CREATE_TABLE_PAAR);*/
+        db.execSQL(CREATE_TABLE_PAAR);
         String CREATE_TABLE_SPELTYPE = "CREATE TABLE speltype (" +
                 "id INTEGER PRIMARY KEY," +
                 "naam TEXT)";
@@ -87,7 +87,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertStoornissen(db);
         insertKlanken(db);
         insertDoelklanken(db);
-       /* insertParen(db);*/
+        insertParen(db);
         insertSpelTypes(db);
 
     }
@@ -183,8 +183,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //-------------------------------------------------------------------------------------------------
-    //  CRUD Operations
-    //-------------------------------------------------------------------------------------------------
+    //  CRUD Operations//-------------------------------------------------------------------------------------------------
 
     // insert-methode met ContentValues
     public long insertGebruiker(Gebruiker gebruiker) {
@@ -407,6 +406,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return paar;
+    }
+
+    public List<Paar> getParenByDoelklank(long doelklankId) {
+        List<Paar> lijst = new ArrayList<>();
+
+        String selectQuery = "SELECT * FROM paar WHERE doelklankId = ?";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery,
+                new String[] {String.valueOf(doelklankId)});
+
+        if (cursor.moveToFirst()) {
+            do {
+                Paar paar = new Paar(
+                        cursor.getLong(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getInt(3)
+                );
+
+                lijst.add(paar);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return lijst;
     }
 
     public List<Gebruiker> getGebruikers() {

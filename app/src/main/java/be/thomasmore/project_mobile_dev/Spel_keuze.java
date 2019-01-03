@@ -86,7 +86,7 @@ public class Spel_keuze extends AppCompatActivity {
             intent = new Intent(this, LuisterGoedUitleg.class);
         }
         else {
-            intent = new Intent(this, ZegHetZelfEens.class);
+            intent = new Intent(this, ZegHetZelfEensUitleg.class);
         }
         intent.putExtras(bundle);
         startActivity(intent);

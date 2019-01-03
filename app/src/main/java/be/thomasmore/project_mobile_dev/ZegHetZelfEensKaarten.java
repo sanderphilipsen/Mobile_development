@@ -31,7 +31,7 @@ public class ZegHetZelfEensKaarten extends AppCompatActivity {
         spel.setGebruikerId(bundle.getLong("gebruikerId"));
     }
 
-    public void image_onClick(View v) {
+    public void image_onCick(View v) {
         ImageView kaart = (ImageView)findViewById(v.getId());
 
         int id;
