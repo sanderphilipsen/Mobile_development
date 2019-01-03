@@ -1,12 +1,14 @@
 package be.thomasmore.project_mobile_dev;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.media.AudioManager;
 import be.thomasmore.project_mobile_dev.classes.Spel;
@@ -37,6 +39,9 @@ public void speel_onClick(View v) {
             startActivity(intent);
         }
     else {
+            TextView uitleg = (TextView) findViewById(R.id.luistergoeduitleg);
+            uitleg.setTextColor(Color.RED);
+            uitleg.setAllCaps(true);
             Toast.makeText(v.getContext(),"Steek oortjes in, voor je verder gaat!", Toast.LENGTH_LONG);
         }
 }
