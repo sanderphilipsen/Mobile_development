@@ -20,7 +20,7 @@ import be.thomasmore.project_mobile_dev.classes.Stoornis;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 16;
+    private static final int DATABASE_VERSION = 17;
     // Database Name
     private static final String DATABASE_NAME = "Project";
 
