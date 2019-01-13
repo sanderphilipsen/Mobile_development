@@ -12,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.Random;
+
 public class ZegHetZelfEensKaart extends AppCompatActivity {
 
     private String eersteWoord;
@@ -56,6 +58,7 @@ public class ZegHetZelfEensKaart extends AppCompatActivity {
     public void image1_onClick(View v) {
         if(oplossing.equals(eersteWoord)) {
             juist = true;
+
         } else {
             juist = false;
         }
@@ -92,6 +95,7 @@ public class ZegHetZelfEensKaart extends AppCompatActivity {
         eersteWoord = null;
         tweedeWoord = null;
         oplossing = null;
+
         finish();
     }
 
