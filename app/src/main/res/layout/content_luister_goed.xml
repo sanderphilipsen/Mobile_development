@@ -9,13 +9,14 @@
     tools:showIn="@layout/activity_luister_goed">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dip"
+        android:layout_height="fill_parent"
         android:layout_weight="1"
         android:orientation="vertical"
         android:gravity="center">
     <ImageView
         android:onClick="speel_onClick"
         android:id="@+id/oor"
+        android:layout_gravity="center_vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:src="@drawable/oor"/>

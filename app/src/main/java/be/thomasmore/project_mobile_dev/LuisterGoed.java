@@ -159,7 +159,7 @@ public class LuisterGoed extends AppCompatActivity {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
                     stopPlayer();
-                   terug_Naar_Home();
+                   goed_Gedaan();
                 }
             });
         }
@@ -169,11 +169,12 @@ public class LuisterGoed extends AppCompatActivity {
             player.pause();
         }
     }
-    public void terug_Naar_Home() {
+    public void goed_Gedaan() {
         Bundle bundle = new Bundle();
         AddMedaille();
-        bundle.putLong("gebruikerId", spel.getGebruikerId());
-        Intent intent = new Intent(this, Home.class);
+        bundle.putLong("gebruikerId" ,spel.getGebruikerId());
+        bundle.putLong("spelId", spelId);
+        Intent intent = new Intent(this, GoedGedaan.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }

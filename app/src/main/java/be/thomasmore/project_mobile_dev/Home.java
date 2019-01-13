@@ -17,7 +17,6 @@ import be.thomasmore.project_mobile_dev.classes.Gebruiker;
 
 public class Home extends AppCompatActivity {
 
-
     private DatabaseHelper db;
   public Gebruiker gebruiker = new Gebruiker();
   public long gebruikerId;
@@ -29,11 +28,11 @@ public class Home extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         gebruikerId = bundle.getLong("gebruikerId");
         gebruiker = db.getGebruiker(gebruikerId);
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
+     /*   BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);*/
+      /*  bottomNav.setOnNavigationItemSelectedListener(navListener);*/
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
     }
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+/*    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -52,7 +51,7 @@ public class Home extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, selectedFragment).commit();
             return true;
         }
-    };
+    };*/
     public void Speel_onClick(View v){
         Bundle bundle = new Bundle();
         bundle.putLong("gebruikerId", gebruikerId);

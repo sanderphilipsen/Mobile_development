@@ -30,15 +30,15 @@ public class MedalsFragment extends Fragment {
       final TextView mmluistergoedlabel = (TextView) view.findViewById(R.id.minimedailleluistergoedlabel);
        final TextView mmzeglabel = (TextView) view.findViewById(R.id.minimedaillezeglabel);
        final TextView szeglabel = (TextView) view.findViewById(R.id.supermedaillezeglabel);
+
      if (Integer.parseInt(String.valueOf(gebruiker.getGrotemedaillesluistergoed())) > 0) {
-          /* smedailleluistergoed.setImageResource(R.drawable.supermedaille1);
-     sluistergoedlabel.setText("Je hebt al" +String.valueOf(gebruiker.getGrotemedaillesluistergoed()) + " supermedailles!");*/
+         sluistergoedlabel.setText("Je hebt al " + String.valueOf(gebruiker.getGrotemedaillesluistergoed()) + " minimedaille!");
        } else {
            smedailleluistergoed.setImageResource(R.drawable.supermedaillegrijs);
       sluistergoedlabel.setText("Nog geen supermedaille");
        }
-
        if (Integer.parseInt(String.valueOf(gebruiker.getMinimedaillesluistergoed())) > 0) {
+
            mmedailleluistergoed.setImageResource(R.drawable.minimedaille1);
              mmluistergoedlabel.setText("Je hebt al " + String.valueOf(gebruiker.getMinimedaillesluistergoed()) + " minimedailles!");
        } else {

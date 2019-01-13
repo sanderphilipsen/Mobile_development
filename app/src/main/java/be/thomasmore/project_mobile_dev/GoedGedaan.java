@@ -59,9 +59,18 @@ public class GoedGedaan extends AppCompatActivity {
         bundle.putLong("speltypeId", speltypeId);
         bundle.putLong("doelklankId", doelklankId);
 
-        Intent intent = new Intent(this, ZegHetZelfEensUitleg.class);
-        intent.putExtras(bundle);
-        startActivity(intent);
+        if (spel.getSpeltypeId()==1){
+            Intent intent = new Intent(this, LuisterGoed.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
+        else{
+            Intent intent = new Intent(this, ZegHetZelfEensUitleg.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
+
+
     }
 
     private void speelGeluid(String geluid) {
