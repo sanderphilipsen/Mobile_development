@@ -35,6 +35,7 @@ class KaartAdapter extends BaseAdapter {
             imageView.setLayoutParams(new ViewGroup.LayoutParams(250, 250));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setPadding(8, 8, 8, 8);
+            imageView.setBackgroundResource(R.color.colorPrimary);
         } else {
             imageView = (ImageView) convertView;
         }

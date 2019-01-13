@@ -74,6 +74,12 @@ public class ZegHetZelfEensKaart extends AppCompatActivity {
     }
 
     private void gaVerder() {
+
+        if(player != null) {
+            player.stop();
+            player = null;
+        }
+
         Bundle bundle = new Bundle();
         bundle.putBoolean("juist", juist);
         bundle.putInt("positie", positie);
@@ -90,15 +96,17 @@ public class ZegHetZelfEensKaart extends AppCompatActivity {
     }
 
     private void speelWoord() {
-        player = MediaPlayer.create(this, getResourceId(oplossing, "raw", getPackageName()));
-        player.start();
-        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                player.stop();
-                player = null;
-            }
-        });
+        if(player == null) {
+            player = MediaPlayer.create(this, getResourceId(oplossing, "raw", getPackageName()));
+            player.start();
+            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    player.stop();
+                    player = null;
+                }
+            });
+        }
     }
 
     private int getResourceId(String pVariableName, String pResourcename, String pPackageName)

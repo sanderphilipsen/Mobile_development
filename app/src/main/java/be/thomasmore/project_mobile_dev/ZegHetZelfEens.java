@@ -22,6 +22,7 @@ public class ZegHetZelfEens extends AppCompatActivity {
     private Paar minimaalPaar;
 
     String[] oplossingen = new String[9];
+    Boolean[] oplossingenJuist = new Boolean[9];
 
     private Boolean juist;
     private int positie;
@@ -57,6 +58,7 @@ public class ZegHetZelfEens extends AppCompatActivity {
                 if(juist) {
                     counter++;
                     pasAfbeeldingAan(positie);
+                    oplossingenJuist[positie] = true;
                 }
 
                 if(counter >= 9 ) {
@@ -73,16 +75,18 @@ public class ZegHetZelfEens extends AppCompatActivity {
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Bundle bundle = new Bundle();
-                bundle.putString("eersteWoord", minimaalPaar.getEerstepaar());
-                bundle.putString("tweedeWoord", minimaalPaar.getTweedepaar());
-                bundle.putString("oplossing", oplossingen[position]);
-                bundle.putInt("positie", position);
+                if(!oplossingenJuist[position]) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("eersteWoord", minimaalPaar.getEerstepaar());
+                    bundle.putString("tweedeWoord", minimaalPaar.getTweedepaar());
+                    bundle.putString("oplossing", oplossingen[position]);
+                    bundle.putInt("positie", position);
 
-                Intent intent = new Intent(ZegHetZelfEens.this, ZegHetZelfEensKaart.class);
-                intent.putExtras(bundle);
+                    Intent intent = new Intent(ZegHetZelfEens.this, ZegHetZelfEensKaart.class);
+                    intent.putExtras(bundle);
 
-                startActivityForResult(intent, 1);
+                    startActivityForResult(intent, 1);
+                }
             }
         });
     }
@@ -99,6 +103,10 @@ public class ZegHetZelfEens extends AppCompatActivity {
             } else {
                 oplossingen[i] = tweedeWoord;
             }
+        }
+
+        for (int i=0; i < 9; i++) {
+            oplossingenJuist[i] = false;
         }
     }
 

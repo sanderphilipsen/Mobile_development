@@ -52,7 +52,7 @@
             android:textSize="18dp"
             android:textAlignment="center"
             android:layout_marginHorizontal="20dp"
-            android:text="Raak het varkentje aan om de uitleg opnieuw te horen"/>
+            android:text="@string/zeg_het_zelf_eens_uitleg_herhaal"/>
 
         <TextView
             android:layout_width="match_parent"
