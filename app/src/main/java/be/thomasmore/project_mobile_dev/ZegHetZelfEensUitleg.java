@@ -1,6 +1,7 @@
 package be.thomasmore.project_mobile_dev;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -24,6 +25,8 @@ public class ZegHetZelfEensUitleg extends AppCompatActivity {
     private DatabaseHelper db;
     List<Paar> paren = new ArrayList<Paar>();
 
+    private MediaPlayer player;
+
     public Spel spel;
     public Long spelId;
     public Long gebruikerId;
@@ -42,6 +45,8 @@ public class ZegHetZelfEensUitleg extends AppCompatActivity {
 
         getParen();
         vulListView();
+
+        speelUitleg();
     }
 
     private void nieuwSpel() {
@@ -78,6 +83,11 @@ public class ZegHetZelfEensUitleg extends AppCompatActivity {
 
     private void gaVerder(long id)
     {
+        if(player != null) {
+            player.stop();
+            player = null;
+        }
+
         Bundle bundle = new Bundle();
         bundle.putLong("paarId", id);
         bundle.putLong("spelId", spelId);
@@ -85,6 +95,25 @@ public class ZegHetZelfEensUitleg extends AppCompatActivity {
         Intent intent = new Intent(this, ZegHetZelfEens.class);
         intent.putExtras(bundle);
         startActivity(intent);
+    }
+
+    public void varken_onClick(View v) {
+        speelUitleg();
+    }
+
+    public void speelUitleg() {
+
+        if(player == null) {
+            player = MediaPlayer.create(this, R.raw.spel3);
+            player.start();
+            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    player.stop();
+                    player = null;
+                }
+            });
+        }
     }
 
     class CustomAdapter extends BaseAdapter {

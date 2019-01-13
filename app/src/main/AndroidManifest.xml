@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="be.thomasmore.project_mobile_dev"
     android:installLocation="preferExternal">
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -63,6 +64,11 @@
         <activity
             android:name=".ZegHetZelfEensKaart"
             android:label="@string/title_activity_zeg_het_zelf_eens_kaart"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".GoedGedaan"
+            android:label="@string/title_activity_goed_gedaan"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
+
 </manifest>

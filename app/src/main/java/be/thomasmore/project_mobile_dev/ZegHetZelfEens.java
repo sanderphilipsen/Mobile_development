@@ -18,6 +18,7 @@ public class ZegHetZelfEens extends AppCompatActivity {
 
     private Long gebruikerId;
     private Long minimaalPaarId;
+    private Long spelId;
     private Paar minimaalPaar;
 
     String[] oplossingen = new String[9];
@@ -38,6 +39,7 @@ public class ZegHetZelfEens extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         gebruikerId = bundle.getLong("gebruikerId");
         minimaalPaarId = bundle.getLong("paarId");
+        spelId = bundle.getLong("spelId");
         minimaalPaar = db.getPaar(minimaalPaarId);
         maakOplossingenArray(minimaalPaar.getEerstepaar(), minimaalPaar.getTweedepaar());
 
@@ -114,7 +116,8 @@ public class ZegHetZelfEens extends AppCompatActivity {
 
         Bundle bundle = new Bundle();
         bundle.putLong("gebruikerId" , gebruikerId);
-        Intent intent = new Intent(this, Home.class);
+        bundle.putLong("spelId", spelId);
+        Intent intent = new Intent(this, GoedGedaan.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }

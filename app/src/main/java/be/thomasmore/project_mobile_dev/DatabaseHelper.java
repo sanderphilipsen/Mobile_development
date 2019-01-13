@@ -617,6 +617,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return lijst;
     }
+    public Spel getSpel(long id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(
+                "spel",      // tabelnaam
+                new String[] { "id", "gebruikerId", "speltypeId", "doelklankId" }, // kolommen
+                "id = ?",  // selectie
+                new String[] { String.valueOf(id) }, // selectieparameters
+                null,           // groupby
+                null,           // having
+                null,           // sorting
+                null);          // ??
+
+        Spel spel = new Spel();
+        int d = cursor.getCount();
+        if (cursor.moveToFirst()) {
+            spel = new Spel(cursor.getLong(0),
+                    cursor.getLong(1),
+                    cursor.getLong(2),
+                    cursor.getLong(3));
+        }
+        cursor.close();
+        db.close();
+        return spel;
+    }
 
     public int getCountGebruikers() {
         String selectQuery = "SELECT  * FROM gebruiker";

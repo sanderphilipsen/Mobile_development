@@ -32,8 +32,6 @@ public class Home extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
-     /*   TextView editTextNaam = (TextView) findViewById(R.id.naam);
-        editTextNaam.setText("Hallo "+gebruiker.welkom());*/
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {

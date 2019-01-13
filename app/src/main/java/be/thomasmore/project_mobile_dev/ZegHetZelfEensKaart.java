@@ -1,7 +1,9 @@
 package be.thomasmore.project_mobile_dev;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.media.Image;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,7 +19,7 @@ public class ZegHetZelfEensKaart extends AppCompatActivity {
     private String oplossing;
     private Boolean juist;
     private int positie;
-
+    private MediaPlayer player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class ZegHetZelfEensKaart extends AppCompatActivity {
         positie = bundle.getInt("positie");
 
         pasImagesAan(eersteWoord, tweedeWoord, oplossing);
+        speelWoord();
     }
 
     private void pasImagesAan(String eersteWoord,String tweedeWoord,String oplossing) {
@@ -46,25 +49,18 @@ public class ZegHetZelfEensKaart extends AppCompatActivity {
         tweedeWoordImage.setImageResource(getResources().getIdentifier(tweedeWoord, "drawable", getPackageName()));
     }
 
+    public void oplossing_onClick(View v) {
+        speelWoord();
+    }
+
     public void image1_onClick(View v) {
         if(oplossing.equals(eersteWoord)) {
             juist = true;
         } else {
             juist = false;
         }
-        Bundle bundle = new Bundle();
-        bundle.putBoolean("juist", juist);
-        bundle.putInt("positie", positie);
 
-        Intent intent = new Intent();
-        intent.putExtras(bundle);
-
-        setResult(RESULT_OK, intent);
-
-        eersteWoord = null;
-        tweedeWoord = null;
-        oplossing = null;
-        finish();
+        gaVerder();
     }
 
     public void image2_onClick(View v) {
@@ -74,6 +70,10 @@ public class ZegHetZelfEensKaart extends AppCompatActivity {
             juist = false;
         }
 
+        gaVerder();
+    }
+
+    private void gaVerder() {
         Bundle bundle = new Bundle();
         bundle.putBoolean("juist", juist);
         bundle.putInt("positie", positie);
@@ -89,4 +89,25 @@ public class ZegHetZelfEensKaart extends AppCompatActivity {
         finish();
     }
 
+    private void speelWoord() {
+        player = MediaPlayer.create(this, getResourceId(oplossing, "raw", getPackageName()));
+        player.start();
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                player.stop();
+                player = null;
+            }
+        });
+    }
+
+    private int getResourceId(String pVariableName, String pResourcename, String pPackageName)
+    {
+        try {
+            return getResources().getIdentifier(pVariableName, pResourcename, pPackageName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
 }
