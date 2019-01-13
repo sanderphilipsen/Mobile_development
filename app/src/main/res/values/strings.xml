@@ -16,20 +16,22 @@
     <string name="title_activity_doelklankkeuze">Kies de doelklank</string>
     <string name="title_activity_min_paar_keuze">Kies het minimale paar</string>
     <string name="title_activity_spel_keuze">Kies je favoriete spel</string>
-    <string name="title_activity_zeg_het_zelf_eens">Zeg Het Zelf Eens</string>
-    <string name="title_activity_zeg_het_zelf_eens_kaarten">Zeg Het Zelf Eens</string>
-    <string name="title_activity_luister_goed">Luister Goed</string>
-    <string name="Luister_goed_instructie">Steek je hoofdtelefoon in, als je klaar bent druk je op start. Let goed op!</string>
 
+    <string name="title_activity_luister_goed">Luister Goed</string>
+    <string name="title_activity_luister_goed_uitleg">Luister Goed</string>
+    <string name="Luister_goed_instructie">Steek je hoofdtelefoon in, als je klaar bent druk je op start. Let goed op!</string>
     <string name="uitleg_luister_goed">Je kan pas op start drukken als je oortjes hebt ingestoken.</string>
-    <string name="zeg_het_zelf_eens_kies">Kies de woordjes die je wil oefenen</string>
-    <string name="zeg_het_zelf_eens_label_uitleg">
-        Speluitleg
-    </string>
-    <string name="zeg_het_zelf_eens_uitleg">Klik op een van de varkentjes en zeg wat je ziet. Jouw helper duidt dan de prent aan van het woordje dat jij gezegd hebt. Zijn de twee prenten hetzelfde, dan heb je het goed gezegd. Zijn de twee prenten niet hetzelfde, dan heb je een foutje gemaakt. Niet erg! Probeer het dan nog maar eens.</string>
-    <string name="zeg_het_zelf_eens_herhaal">Raak de afbeelding aan om het woordje opnieuw te horen</string>
-    <string name="title_activity_luister_goed_uitleg">LuisterGoedUitleg</string>
-    <string name="title_activity_goed_gedaan">GoedGedaan</string>
+
+    <string name="title_activity_zeg_het_zelf_eens">Zeg Het Zelf Eens</string>
+    <string name="title_activity_zeg_het_zelf_eens_kaart">Zeg Het Zelf Eens</string>
     <string name="title_activity_zeg_het_zelf_eens_uitleg">Zeg Het Zelf Eens</string>
-    <string name="title_activity_zeg_het_zelf_eens_kaart">ZegHetZelfEensKaart</string>
+    <string name="title_activity_zeg_het_zelf_eens_kaarten">Zeg Het Zelf Eens</string>
+    <string name="zeg_het_zelf_eens_kies">Kies de woordjes die je wil oefenen</string>
+    <string name="zeg_het_zelf_eens_label_uitleg">Speluitleg</string>
+    <string name="zeg_het_zelf_eens_herhaal">Raak de afbeelding aan om het woordje opnieuw te horen</string>
+    <string name="zeg_het_zelf_eens_uitleg_herhaal">Raak het varkentje aan om de uitleg opnieuw te horen</string>
+
+    <string name="title_activity_goed_gedaan">Proficiat!</string>
+    <string name="goed_gedaan_knop_opnieuw">Speel opnieuw</string>
+    <string name="goed_gedaan_knop_beginscherm">Ga naar beginscherm</string>
 </resources>
